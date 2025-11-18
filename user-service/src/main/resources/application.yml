@@ -1,0 +1,25 @@
+server:
+  port: 8083  # USER-SERVICE must NOT use 8080 or 8083
+
+spring:
+  application:
+    name: USER-SERVICE
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: kira
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+# Optional: To show nice logs in Eureka UI
+info:
+  app:
+    name: USER-SERVICE
+    version: SNAPSHOT-1.0.0

@@ -1,0 +1,25 @@
+server:
+  port: 8085
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/Product_Inventory
+  application:
+    name: user-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8085/eureka/
+  instance:
+    prefer-ip-address: true
+
+services:
+  product:
+    url: http://product-service
+  order:
+    url: http://order-service
+  payment:
+    url: http://payment-service

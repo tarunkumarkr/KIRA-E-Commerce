@@ -1,0 +1,17 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/kira_order_payment_db
+  application:
+    name: kira-order-payment-service
+
+server:
+  port: 8082
+
+feign:
+  circuit breaker:
+    enabled: true
+
+logging:
+  level:
+    root: INFO

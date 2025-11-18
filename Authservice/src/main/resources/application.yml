@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: AUTH-SERVICE
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/auth_service_db
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: prakashsai5204@gmail.com
+    password: hzvf mlql xdur qvex
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

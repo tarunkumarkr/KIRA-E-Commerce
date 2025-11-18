@@ -1,0 +1,38 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: API-GATEWAY
+
+  cloud:
+    gateway:
+
+      default-filters:
+        - PreserveHostHeader
+        - name: AddRequestHeader
+          args:
+            name: Authorization
+            value: "#{request.headers.Authorization}"
+        - name: RemoveRequestHeader
+          args:
+            name: Cookie
+
+      routes:
+
+        - id: auth-service
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/api/v1/auth/**
+
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/customers/**,/api/v1/cart/**,/api/v1/vendors/**
+
+        - id: product-service
+          uri: lb://PRODUCT-INVENTORY-SERVICE
+          predicates:
+            - Path=/api/v1/products/**
+          filters:
+            - RemoveRequestHeader=Cookie
